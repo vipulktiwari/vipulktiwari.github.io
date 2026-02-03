@@ -49,6 +49,22 @@
       color: #94a3b8;
       border-top: 1px solid #334155;
     }
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .reveal.delay-1 { animation-delay: 0.2s; }
+    .reveal.delay-2 { animation-delay: 0.4s; }
+    .reveal.delay-3 { animation-delay: 0.6s; }
+
+    header h1, header h2, header p { animation: fadeUp 0.8s ease forwards; }
   </style>
 </head>
 <body>
@@ -63,7 +79,7 @@
   </p>
 </header>
 
-<section>
+<section class="reveal">
   <h3>About Me</h3>
   <p>
     Senior Software Developer with 10+ years of experience building high-performance,
@@ -73,7 +89,7 @@
   </p>
 </section>
 
-<section>
+<section class="reveal">
   <h3>Skills</h3>
   <div class="skills">
     <span>Golang</span><span>C</span><span>C++</span><span>Python</span>
@@ -83,10 +99,10 @@
   </div>
 </section>
 
-<section>
+<section class="reveal">
   <h3>Experience</h3>
 
-  <div class="experience">
+  <div class="experience reveal">
     <h4>SAP Labs — Senior Software Developer (2020–Present)</h4>
     <ul>
       <li>Worked on SAP Adaptive Server Enterprise (ASE), focusing on kernel-layer and job scheduler improvements.</li>
@@ -96,7 +112,7 @@
     </ul>
   </div>
 
-  <div class="experience">
+  <div class="experience reveal">
     <h4>Druva Data Solutions — Staff Software Engineer (2018–2020)</h4>
     <ul>
       <li>Designed and developed Quaere, a metadata search microservice using DynamoDB and S3.</li>
@@ -105,7 +121,7 @@
     </ul>
   </div>
 
-  <div class="experience">
+  <div class="experience reveal">
     <h4>Amdocs — Software Developer (2015–2018)</h4>
     <ul>
       <li>Worked on billing and revenue recognition systems for AT&T and T-Mobile US.</li>
@@ -114,7 +130,7 @@
   </div>
 </section>
 
-<section>
+<section class="reveal">
   <h3>Achievements</h3>
   <ul>
     <li>Outstanding Achievement Award at Druva for Quaere.</li>
@@ -123,15 +139,32 @@
   </ul>
 </section>
 
-<section>
+<section class="reveal">
   <h3>Education</h3>
   <p><strong>B.Tech in Computer Science & Engineering</strong><br>
   Rajiv Gandhi Technical University, Bhopal (2011–2015)</p>
 </section>
 
-<footer>
+<footer class="reveal delay-2">
   <p>© 2026 Vipul Tiwari · Built with HTML & CSS</p>
 </footer>
 
+<script>
+    // Intersection Observer for reveal-on-scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
