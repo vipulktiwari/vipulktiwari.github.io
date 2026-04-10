@@ -3,168 +3,894 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vipul Tiwari | Senior Software Developer</title>
+  <title>Vipul Kumar Tiwari — Principal Engineer</title>
   <style>
+    :root {
+      --bg: #07090f;
+      --surface: #0d1117;
+      --surface2: #161b27;
+      --border: #1e2a3a;
+      --accent: #00c9ff;
+      --accent2: #7c3aed;
+      --accent-dim: rgba(0, 201, 255, 0.12);
+      --text: #dde4f0;
+      --text-muted: #6b7c99;
+      --text-soft: #9ab0cc;
+      --green: #22d3a0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
     }
-    a { color: #38bdf8; text-decoration: none; }
-    header {
-      padding: 4rem 2rem;
+
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 3rem;
+      background: rgba(7, 9, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text);
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    nav ul {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    nav ul a {
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      color: var(--text-soft);
+      font-weight: 500;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--accent); opacity: 1; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      background: linear-gradient(135deg, #020617, #020617);
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
     }
-    header h1 { font-size: 2.8rem; margin-bottom: 0.5rem; }
-    header h2 { font-weight: 400; color: #94a3b8; }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 201, 255, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(124, 58, 237, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0, 201, 255, 0.25);
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: fadeDown 0.7s ease both;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    #hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(145deg, #ffffff 30%, #7ab4d8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeDown 0.7s 0.1s ease both;
+    }
+
+    #hero h2 {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 400;
+      color: var(--text-soft);
+      margin-bottom: 1rem;
+      animation: fadeDown 0.7s 0.2s ease both;
+    }
+
+    #hero h2 strong { color: var(--accent); font-weight: 600; }
+
+    .hero-location {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      animation: fadeDown 0.7s 0.3s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeDown 0.7s 0.4s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.72rem 1.6rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: fadeDown 0.7s 0.6s ease both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollLine 1.5s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ── SECTIONS ── */
     section {
       max-width: 1000px;
-      margin: auto;
-      padding: 3rem 2rem;
+      margin: 0 auto;
+      padding: 5rem 2rem;
     }
-    h3 {
-      font-size: 1.6rem;
-      border-bottom: 1px solid #334155;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
     }
-    .skills span {
-      display: inline-block;
-      background: #020617;
-      border: 1px solid #334155;
-      padding: 0.4rem 0.8rem;
-      margin: 0.3rem;
-      border-radius: 6px;
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--border), transparent);
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+      color: #fff;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-soft);
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s;
+    }
+
+    .stat-card:hover { border-color: rgba(0, 201, 255, 0.3); }
+
+    .stat-card .num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-card .label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--border) 80%, transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 1.8rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 8px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 201, 255, 0.15);
+    }
+
+    .timeline-item.current::before {
+      background: var(--green);
+      box-shadow: 0 0 0 3px rgba(34, 211, 160, 0.15), 0 0 12px rgba(34, 211, 160, 0.4);
+    }
+
+    .job-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .job-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .job-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      padding-top: 0.15rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .job-company {
       font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1rem;
     }
-    .experience, .project {
-      margin-bottom: 2rem;
+
+    .job-company span {
+      color: var(--text-muted);
+      font-weight: 400;
     }
+
+    .job-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .job-bullets li {
+      position: relative;
+      padding-left: 1.2rem;
+      font-size: 0.91rem;
+      color: var(--text-soft);
+    }
+
+    .job-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.75rem;
+      top: 0.1em;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .skill-group:hover {
+      border-color: rgba(0, 201, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .skill-group-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-group-title svg {
+      width: 15px; height: 15px;
+      opacity: 0.8;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.82rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-soft);
+      font-weight: 500;
+    }
+
+    /* ── ACHIEVEMENTS ── */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .achievement-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+
+    .achievement-card:hover { border-color: rgba(0, 201, 255, 0.3); }
+
+    .ach-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .ach-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .ach-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .edu-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .edu-degree {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-school {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 0.15rem;
+    }
+
+    .edu-meta {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    /* ── FOOTER ── */
     footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
       text-align: center;
-      padding: 2rem;
-      color: #94a3b8;
-      border-top: 1px solid #334155;
     }
-    /* Animations */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+
+    .footer-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      margin: 1.2rem 0;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); opacity: 1; }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-14px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .reveal {
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .reveal.delay-1 { animation-delay: 0.2s; }
-    .reveal.delay-2 { animation-delay: 0.4s; }
-    .reveal.delay-3 { animation-delay: 0.6s; }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
 
-    header h1, header h2, header p { animation: fadeUp 0.8s ease forwards; }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { gap: 1.2rem; }
+      section { padding: 3.5rem 1.3rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .job-header { flex-direction: column; gap: 0.2rem; }
+      .edu-card { flex-direction: column; gap: 1rem; }
+      .footer-links { flex-wrap: wrap; gap: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      nav ul { display: none; }
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Vipul Kumar Tiwari</h1>
-  <h2>Senior Software Developer | Distributed Systems | Databases</h2>
-  <p>Pune, India · <a href="mailto:er.vktcs@gmail.com">er.vktcs@gmail.com</a></p>
-  <p>
-    <a href="https://linkedin.com/in/vipulkumartiwari">LinkedIn</a> ·
-    <a href="https://github.com/vipulktiwari">GitHub</a>
-  </p>
-</header>
-
-<section class="reveal">
-  <h3>About Me</h3>
-  <p>
-    Senior Software Developer with 10+ years of experience building high-performance,
-    reliable systems in product-based companies. Strong background in database internals,
-    distributed systems, and backend microservices. Passionate about performance,
-    scalability, and clean system design.
-  </p>
-</section>
-
-<section class="reveal">
-  <h3>Skills</h3>
-  <div class="skills">
-    <span>Golang</span><span>C</span><span>C++</span><span>Python</span>
-    <span>Distributed Systems</span><span>Databases</span>
-    <span>Microservices</span><span>Data Structures</span>
-    <span>Kubernetes</span><span>AWS</span>
-  </div>
-</section>
-
-<section class="reveal">
-  <h3>Experience</h3>
-
-  <div class="experience reveal">
-    <h4>SAP Labs — Senior Software Developer (2020–Present)</h4>
-    <ul>
-      <li>Worked on SAP Adaptive Server Enterprise (ASE), focusing on kernel-layer and job scheduler improvements.</li>
-      <li>Handled business-critical escalations requiring deep database internals expertise.</li>
-      <li>Built Hanaservice Sync Agent microservice in Python on Kubernetes.</li>
-      <li>Owned cloud services end-to-end including testing, monitoring, and documentation.</li>
-    </ul>
-  </div>
-
-  <div class="experience reveal">
-    <h4>Druva Data Solutions — Staff Software Engineer (2018–2020)</h4>
-    <ul>
-      <li>Designed and developed Quaere, a metadata search microservice using DynamoDB and S3.</li>
-      <li>Improved search performance and reduced infrastructure cost (COGS).</li>
-      <li>Built CI system using Python and Docker for automated testing and merging.</li>
-    </ul>
-  </div>
-
-  <div class="experience reveal">
-    <h4>Amdocs — Software Developer (2015–2018)</h4>
-    <ul>
-      <li>Worked on billing and revenue recognition systems for AT&T and T-Mobile US.</li>
-      <li>Provided production support and handled multiple critical change requests.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="reveal">
-  <h3>Achievements</h3>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">VK<span>T</span></div>
   <ul>
-    <li>Outstanding Achievement Award at Druva for Quaere.</li>
-    <li>AIR 2451 in GATE 2015 (Score: 565).</li>
-    <li>1st Rank in Code Quest 2014, 2nd Rank in Code Master 2015.</li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Highlights</a></li>
+    <li><a href="#education">Education</a></li>
   </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">Available for select opportunities</div>
+  <h1>Vipul Kumar<br>Tiwari</h1>
+  <h2>Principal Engineer · <strong>Oracle</strong> · Databases &amp; Distributed Systems</h2>
+  <p class="hero-location">📍 Pune, India · 10+ years of experience</p>
+  <div class="hero-btns">
+    <a class="btn btn-primary" href="mailto:er.vktcs@gmail.com">Get in touch</a>
+    <a class="btn btn-outline" href="https://linkedin.com/in/vipulkumartiwari" target="_blank">LinkedIn</a>
+    <a class="btn btn-outline" href="https://github.com/vipulktiwari" target="_blank">GitHub</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title">Building systems that scale.</h2>
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      <p>
+        I'm a software engineer with 10+ years of experience building high-performance,
+        reliable systems at the intersection of databases, distributed systems, and cloud infrastructure.
+      </p>
+      <p>
+        Currently at <strong>Oracle</strong>, I work deep inside Oracle RDBMS — specifically the
+        LogMiner component used in high-availability and replication solutions like GoldenGate.
+        Before that, I contributed to <strong>SAP ASE</strong>'s kernel layer and shipped a
+        cloud-native microservice on Kubernetes.
+      </p>
+      <p>
+        I care deeply about correctness, performance, and the kind of engineering that makes
+        systems invisible to the people who depend on them.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="num">10+</div>
+        <div class="label">Years of experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">4</div>
+        <div class="label">Product companies</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">3</div>
+        <div class="label">Languages mastered</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">∞</div>
+        <div class="label">Core dumps read</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="reveal">
-  <h3>Education</h3>
-  <p><strong>B.Tech in Computer Science & Engineering</strong><br>
-  Rajiv Gandhi Technical University, Bhopal (2011–2015)</p>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">Where I've worked.</h2>
+  <div class="timeline">
+
+    <div class="timeline-item current fade-in">
+      <div class="job-header">
+        <div class="job-title">Principal Member of Technical Staff</div>
+        <div class="job-date">02/2026 – Present</div>
+      </div>
+      <div class="job-company">Oracle <span>· Pune, India</span></div>
+      <ul class="job-bullets">
+        <li>Enhancing the LogMiner component in Oracle RDBMS, the foundation for High Availability solutions and Oracle GoldenGate — used globally for database replication and migration.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="job-header">
+        <div class="job-title">Senior Software Developer</div>
+        <div class="job-date">07/2020 – 02/2026</div>
+      </div>
+      <div class="job-company">SAP Labs <span>· Pune, India</span></div>
+      <ul class="job-bullets">
+        <li>Contributed to SAP Adaptive Server Enterprise (ASE), a high-performance OLTP database, focusing on kernel-layer enhancements and Job Scheduler improvements.</li>
+        <li>Handled high-priority, business-critical escalations for enterprise customers requiring deep expertise in database internals.</li>
+        <li>Designed and developed the Hanaservice Sync Agent — a Python microservice on Kubernetes enabling reliable cross-cluster synchronization of Custom Resources.</li>
+        <li>Owned end-to-end delivery of cloud services including testing frameworks, E2E test suites, observability (alerts &amp; monitoring), and documentation.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="job-header">
+        <div class="job-title">Staff Software Engineer</div>
+        <div class="job-date">03/2018 – 07/2020</div>
+      </div>
+      <div class="job-company">Druva Data Solutions <span>· Pune, India</span></div>
+      <ul class="job-bullets">
+        <li>Designed and built Quaere from scratch — a metadata search microservice using AWS DynamoDB and S3 for scalable, reliable metadata storage and retrieval.</li>
+        <li>Enhanced mstore, a mail storage service, by integrating Quaere as the underlying storage namespace provider.</li>
+        <li>Optimized search performance and reduced COGS by improving architecture and resource utilization.</li>
+        <li>Built a CI system in Python and Docker for automated testing and seamless code integration.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="job-header">
+        <div class="job-title">Software Developer</div>
+        <div class="job-date">09/2015 – 03/2018</div>
+      </div>
+      <div class="job-company">Amdocs DVCI <span>· Pune, India</span></div>
+      <ul class="job-bullets">
+        <li>Full lifecycle development of change requests for Accounts Receivable and Billing modules for AT&amp;T Telecom.</li>
+        <li>Provided on-site production support in Mexico for a Revenue Recognition change request.</li>
+        <li>Developed CDR processing solutions for the Ensemble MPS component, used for billing and charge generation.</li>
+        <li>Delivered multiple change requests for T-Mobile US as an MAF/MPS developer, owning DCUT activities.</li>
+      </ul>
+    </div>
+
+  </div>
 </section>
 
-<footer class="reveal delay-2">
-  <p>© 2026 Vipul Tiwari · Built with HTML & CSS</p>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <h2 class="section-title">What I work with.</h2>
+  <div class="skills-grid">
+
+    <div class="skill-group fade-in">
+      <div class="skill-group-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        Languages
+      </div>
+      <div class="skill-tags">
+        <span class="tag">C</span>
+        <span class="tag">C++</span>
+        <span class="tag">Golang</span>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Bash</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade-in">
+      <div class="skill-group-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Databases & Storage
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Oracle RDBMS</span>
+        <span class="tag">SAP ASE</span>
+        <span class="tag">DynamoDB</span>
+        <span class="tag">S3</span>
+        <span class="tag">DB Internals</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade-in">
+      <div class="skill-group-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+        Cloud & Infrastructure
+      </div>
+      <div class="skill-tags">
+        <span class="tag">AWS</span>
+        <span class="tag">Kubernetes</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Microservices</span>
+      </div>
+    </div>
+
+    <div class="skill-group fade-in">
+      <div class="skill-group-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        Core Expertise
+      </div>
+      <div class="skill-tags">
+        <span class="tag">System Design</span>
+        <span class="tag">Distributed Systems</span>
+        <span class="tag">High Availability</span>
+        <span class="tag">Performance</span>
+        <span class="tag">Algorithms</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label">Highlights</div>
+  <h2 class="section-title">Recognition & milestones.</h2>
+  <div class="achievements-grid">
+
+    <div class="achievement-card fade-in">
+      <div class="ach-icon">🏆</div>
+      <div>
+        <div class="ach-title">Outstanding Achievement Award</div>
+        <div class="ach-desc">Awarded at Druva Data Solutions for designing and delivering Quaere — a production metadata search microservice.</div>
+      </div>
+    </div>
+
+    <div class="achievement-card fade-in">
+      <div class="ach-icon">⭐</div>
+      <div>
+        <div class="ach-title">Customer Excellence Awards · SAP ASE</div>
+        <div class="ach-desc">Received multiple on-the-spot awards from enterprise customers for exceptional fix delivery, responsiveness, and professionalism.</div>
+      </div>
+    </div>
+
+    <div class="achievement-card fade-in">
+      <div class="ach-icon">📊</div>
+      <div>
+        <div class="ach-title">AIR 2451 · GATE 2015</div>
+        <div class="ach-desc">All India Rank 2451 with a score of 565 in the Graduate Aptitude Test in Engineering (CS).</div>
+      </div>
+    </div>
+
+    <div class="achievement-card fade-in">
+      <div class="ach-icon">🥇</div>
+      <div>
+        <div class="ach-title">Competitive Programming</div>
+        <div class="ach-desc">1st Rank in Code Quest 2014 · 2nd Rank in Code Master 2015.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">Academic background.</h2>
+  <div class="edu-card fade-in">
+    <div class="edu-icon">🎓</div>
+    <div>
+      <div class="edu-degree">Bachelor of Technology — Computer Science &amp; Engineering</div>
+      <div class="edu-school">Rajiv Gandhi Technical University, Bhopal</div>
+      <div class="edu-meta">2011 – 2015 &nbsp;·&nbsp; GPA: 8.07 / 10</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Vipul Kumar Tiwari</div>
+  <p style="color: var(--text-muted); font-size: 0.88rem;">Principal Engineer · Databases · Distributed Systems</p>
+  <div class="footer-links">
+    <a href="mailto:er.vktcs@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/vipulkumartiwari" target="_blank">LinkedIn</a>
+    <a href="https://github.com/vipulktiwari" target="_blank">GitHub</a>
+    <a href="tel:+918839814859">+91-8839814859</a>
+  </div>
+  <div class="footer-copy">© 2026 Vipul Kumar Tiwari · Pune, India</div>
 </footer>
 
 <script>
-    // Intersection Observer for reveal-on-scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = 'running';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    reveals.forEach(el => {
-      el.style.animationPlayState = 'paused';
-      observer.observe(el);
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
     });
-  </script>
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Stagger children when parent is in a grid
+  document.querySelectorAll('.skills-grid, .achievements-grid, .about-stats').forEach(grid => {
+    [...grid.children].forEach((child, i) => {
+      child.style.transitionDelay = `${i * 0.08}s`;
+    });
+  });
+</script>
 </body>
 </html>
