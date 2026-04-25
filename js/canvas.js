@@ -6,7 +6,13 @@
 
   const PARTICLE_COUNT = 55;
   const MAX_DIST       = 140;
-  const COLORS         = ['rgba(0,201,255,', 'rgba(124,58,237,', 'rgba(16,217,160,'];
+
+  function getColors() {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    return isLight
+      ? ['rgba(99,102,241,', 'rgba(139,92,246,', 'rgba(16,185,129,']
+      : ['rgba(0,201,255,', 'rgba(124,58,237,', 'rgba(16,217,160,'];
+  }
 
   function resize() {
     W = canvas.width  = window.innerWidth;
@@ -14,6 +20,7 @@
   }
 
   function randomParticle() {
+    const COLORS = getColors();
     return {
       x:  Math.random() * W,
       y:  Math.random() * H,

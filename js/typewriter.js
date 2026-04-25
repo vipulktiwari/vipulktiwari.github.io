@@ -5,7 +5,6 @@
     'Databases & Distributed Systems',
     'Oracle RDBMS · LogMiner',
     'High Availability Systems',
-    'Performance Engineering',
     'Cloud Infrastructure',
   ];
   let wi = 0, ci = 0, deleting = false;

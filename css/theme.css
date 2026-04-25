@@ -1,0 +1,179 @@
+/* ══════════════════════════════════════════
+   LIGHT THEME OVERRIDES
+   Activated via html[data-theme="light"]
+   ══════════════════════════════════════════ */
+
+/* ─── Tokens ─── */
+html[data-theme="light"] {
+  --bg:          #f8fafc;
+  --surface:     #ffffff;
+  --surface2:    #f1f5f9;
+  --surface3:    #e2e8f0;
+  --border:      #cbd5e1;
+  --border-glow: rgba(99, 102, 241, 0.30);
+  --accent:      #6366f1;
+  --accent2:     #8b5cf6;
+  --accent3:     #f59e0b;
+  --accent-dim:  rgba(99, 102, 241, 0.08);
+  --text:        #0f172a;
+  --text-muted:  #64748b;
+  --text-soft:   #475569;
+  --green:       #10b981;
+  --red:         #ef4444;
+  --glow-cyan:   0 0 30px rgba(99, 102, 241, 0.15);
+  --glow-purple: 0 0 30px rgba(139, 92, 246, 0.15);
+}
+
+/* ─── Base ─── */
+html[data-theme="light"] #cursor-glow {
+  background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%);
+}
+html[data-theme="light"] #bg-canvas {
+  opacity: 0.30;
+}
+html[data-theme="light"] ::selection {
+  background: rgba(99, 102, 241, 0.2);
+  color: #fff;
+}
+
+/* ─── Nav ─── */
+html[data-theme="light"] nav {
+  background: rgba(248, 250, 252, 0.85);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.8);
+}
+html[data-theme="light"] nav.scrolled {
+  background: rgba(248, 250, 252, 0.97);
+}
+html[data-theme="light"] .mobile-menu {
+  background: rgba(248, 250, 252, 0.98);
+}
+
+/* ─── Hero ─── */
+html[data-theme="light"] .hero-mesh {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -5%, rgba(99, 102, 241, 0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 85% 85%, rgba(139, 92, 246, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 10% 70%, rgba(16, 185, 129, 0.04) 0%, transparent 60%);
+}
+html[data-theme="light"] .hero-badge {
+  background: rgba(16, 185, 129, 0.10);
+  border: 1px solid rgba(16, 185, 129, 0.30);
+}
+html[data-theme="light"] .hero-name .line1 {
+  background: linear-gradient(135deg, #0f172a 0%, #312e81 60%, #4338ca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+html[data-theme="light"] .hero-name .line2 {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+html[data-theme="light"] .btn-primary {
+  background: linear-gradient(135deg, var(--accent) 0%, #4338ca 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+}
+html[data-theme="light"] .btn-primary:hover {
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+}
+html[data-theme="light"] .btn-outline {
+  background: rgba(255, 255, 255, 0.85);
+}
+html[data-theme="light"] .btn-outline:hover {
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+}
+
+/* ─── Sections ─── */
+html[data-theme="light"] .section-title {
+  color: var(--text);
+}
+html[data-theme="light"] .about-text .highlight-box {
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+html[data-theme="light"] .stat-card::before {
+  background: linear-gradient(135deg, rgba(99,102,241,0.04), transparent);
+}
+html[data-theme="light"] .timeline-dot {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15), 0 0 12px rgba(99, 102, 241, 0.3);
+}
+html[data-theme="light"] .timeline-item.current .timeline-dot {
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15), 0 0 16px rgba(16, 185, 129, 0.4);
+}
+html[data-theme="light"] .job-title {
+  color: var(--text);
+}
+html[data-theme="light"] .skill-group::after {
+  background: linear-gradient(135deg, rgba(99,102,241,0.03), rgba(139,92,246,0.03));
+}
+html[data-theme="light"] .skill-icon {
+  border: 1px solid rgba(99,102,241,0.2);
+}
+html[data-theme="light"] .tag:hover {
+  border-color: rgba(99,102,241,0.4);
+}
+html[data-theme="light"] .achievement-card:hover .ach-icon-wrap {
+  border-color: rgba(99,102,241,0.3);
+}
+html[data-theme="light"] .ach-title {
+  color: var(--text);
+}
+html[data-theme="light"] .edu-icon-wrap {
+  border: 1px solid rgba(99,102,241,0.2);
+}
+html[data-theme="light"] .edu-badge {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+html[data-theme="light"] .contact-inner {
+  background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(139,92,246,0.06));
+}
+html[data-theme="light"] .contact-inner h2 {
+  color: var(--text);
+}
+html[data-theme="light"] .footer-brand {
+  color: var(--text);
+}
+
+/* ══════════════════════════════════════════
+   THEME TOGGLE BUTTON
+   ══════════════════════════════════════════ */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.25s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--glow-cyan);
+}
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Show sun in dark mode, moon in light mode */
+.theme-toggle .icon-sun {
+  display: block;
+}
+.theme-toggle .icon-moon {
+  display: none;
+}
+html[data-theme="light"] .theme-toggle .icon-sun {
+  display: none;
+}
+html[data-theme="light"] .theme-toggle .icon-moon {
+  display: block;
+}
