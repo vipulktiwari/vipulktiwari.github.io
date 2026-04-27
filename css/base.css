@@ -1,6 +1,6 @@
 /* ══════════════════════════════════════════
    DESIGN TOKENS
-══════════════════════════════════════════ */
+   ══════════════════════════════════════════ */
 :root {
   --bg:          #050810;
   --surface:     #0b0f1a;
@@ -19,45 +19,63 @@
   --red:         #f43f5e;
   --glow-cyan:   0 0 30px rgba(0, 201, 255, 0.25);
   --glow-purple: 0 0 30px rgba(124, 58, 237, 0.25);
-  --radius:      14px;
-  --radius-sm:   8px;
+  --radius:      16px;
+  --radius-sm:   10px;
 }
 
 /* ══════════════════════════════════════════
    RESET & BASE
-══════════════════════════════════════════ */
+   ══════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   line-height: 1.7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a { color: var(--accent); text-decoration: none; transition: all 0.25s; }
 a:hover { opacity: 0.85; }
 
 /* ══════════════════════════════════════════
-   CURSOR GLOW
-══════════════════════════════════════════ */
+    NOISE TEXTURE OVERLAY
+    ══════════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ══════════════════════════════════════════
+    CURSOR GLOW
+    ══════════════════════════════════════════ */
 #cursor-glow {
   position: fixed;
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,201,255,0.04) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,201,255,0.05) 0%, transparent 70%);
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 0;
   transition: opacity 0.3s;
+  will-change: transform;
 }
 
 /* ══════════════════════════════════════════
-   CANVAS BACKGROUND
-══════════════════════════════════════════ */
+    CANVAS BACKGROUND
+    ══════════════════════════════════════════ */
 #bg-canvas {
   position: fixed;
   inset: 0;
@@ -67,20 +85,38 @@ a:hover { opacity: 0.85; }
 }
 
 /* ══════════════════════════════════════════
-   SCROLLBAR
-══════════════════════════════════════════ */
-::-webkit-scrollbar { width: 6px; }
+    SCROLLBAR
+    ══════════════════════════════════════════ */
+::-webkit-scrollbar { width: 7px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+  border-radius: 4px;
+  border: 2px solid var(--bg);
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 /* ══════════════════════════════════════════
-   SELECTION
-══════════════════════════════════════════ */
+    SELECTION
+    ══════════════════════════════════════════ */
 ::selection {
   background: rgba(0, 201, 255, 0.25);
   color: #fff;
+}
+
+/* ══════════════════════════════════════════
+    SECTION SEPARATOR
+    ══════════════════════════════════════════ */
+.section-divider {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+.section-divider::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
 }

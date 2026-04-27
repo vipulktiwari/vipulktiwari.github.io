@@ -8,7 +8,7 @@ const revealObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.reveal, .reveal-left').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal, .reveal-left, .reveal-scale').forEach(el => revealObserver.observe(el));
 
 /* Stagger grid children */
 document.querySelectorAll('.skills-grid, .achievements-grid, .about-stats').forEach(grid => {
